@@ -1,0 +1,113 @@
+✅ Docker Assignment – Step-Wise Process (Easy Revision)
+Step 1: Create a folder for Redis
+
+Windows: C:\DockerProjects\Redis
+Open Git Bash and go to the folder:
+cd /c/DockerProjects/Redis
+
+Step 2: Create a Dockerfile
+
+Create a file named: Dockerfile
+Write inside it:
+FROM redis:latest
+CMD ["redis-server"]
+
+⭐ BUILD → RUN → COMMIT → PUSH → PULL → TEST FLOW
+Step 3: Build image
+
+docker build -t redisnew .
+
+Step 4: Run container
+
+docker run --name myredisnew -d redisnew
+
+Step 5: Check running containers
+
+docker ps
+
+Step 6: Stop the container
+
+docker stop myredisnew
+
+Step 7: List all containers (including stopped)
+
+docker ps -a
+
+⭐ CREATE IMAGE FROM CONTAINER
+Step 8: Commit the container into new image
+
+docker commit 0e993d2009a1 budarajumadhurika/redis1
+
+Step 9: List all images
+
+docker images
+
+⭐ LOGIN → PUSH TO DOCKER HUB
+Step 10: Login to Docker Hub
+
+docker login
+
+Step 11: Push the image
+
+docker push budarajumadhurika/redis1
+
+⭐ REMOVE OLD CONTAINER + IMAGE
+Step 12: Remove the container
+
+docker rm 0e993d2009a1
+
+Step 13: Remove the local image
+
+docker rmi budarajumadhurika/redis1
+
+Step 14: Check containers again
+
+docker ps -a
+
+⭐ DOWNLOAD IMAGE AGAIN FROM DOCKER HUB
+Step 15: Pull the image
+
+docker pull budarajumadhurika/redis1
+
+Step 16: Run a new container using pulled image
+
+docker run --name myredis -d budarajumadhurika/redis1
+
+⭐ REDIS COMMANDS INSIDE CONTAINER
+Step 17: Open Redis CLI inside container
+
+docker exec -it myredis redis-cli
+
+Step 18: Set a key
+
+SET name "Abcdef"
+
+Step 19: Get the key
+
+GET name
+
+Step 20: Exit Redis CLI
+
+exit
+
+⭐ STOP & REMOVE EVERYTHING
+Step 21: Stop container
+
+docker stop myredis
+
+Step 22: Remove container
+
+docker rm 50a6e4a9c326
+
+Step 23: Show images
+
+docker images
+
+Step 24: Remove the image
+
+docker rmi budarajumadhurika/redis1
+
+OPTIONAL
+Step 25: Logout from Docker Hub
+
+docker logout
